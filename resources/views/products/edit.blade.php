@@ -15,7 +15,7 @@
                 </div>
             </div>
             <div class="card-body">
-                <form action="{{ route('products.update', $product->id) }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('products.update', $product->id) }}" method="post">
                     @csrf
                     @method("PUT")
 
@@ -40,28 +40,24 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="kategori">Kategori</label>
-                        <input type="text" class="form-control" id="kategori" name="kategori" value="{{ $product->kategori }}">
-                    </div>
+                        <label for="kode_barang">Kategori</label>
+                        <input type="text" class="form-control" id="kategori" name="kategori" value="{{ isset($products) ? $products->kategori : '' }}">
+                      </div>
 
                     <div class="form-group">
                         <label for="price">Price</label>
-                        <input type="number" class="form-control" id="price" name="price" value="{{ $product->price }}">
-                    </div>
-
-                    <div class="form-group">
+                        <input type="number" class="form-control" id="price" name="price" value="{{ isset($products) ? $products->price : '' }}">
+                      </div>
+                      <div class="form-group">
                         <label for="stock">Stock</label>
-                        <input type="number" class="form-control" id="stock" name="stock" value="{{ $product->stock }}">
-                    </div>
+                        <input type="number" class="form-control" id="stock" name="stock" value="{{ isset($products) ? $products->stock : '' }}">
+                      </div>
+
 
                     <div class="form-group">
-                        <label for="image">Image</label>
-                        <input type="file" class="form-control" id="image" name="image">
-                        @if ($errors->has('image'))
-                            <span class="text-danger">{{ $errors->first('image') }}</span>
-                        @endif
-                    </div>
-
+                        <label for="image">image</label>
+                        <input type="text" class="form-control" id="image" name="image" value="{{ isset($products) ? $products->image : '' }}">
+                      </div>
                     <div class="mb-3 row">
                         <input type="submit" class="col-md-3 offset-md-5 btn btn-primary" value="Update">
                     </div>

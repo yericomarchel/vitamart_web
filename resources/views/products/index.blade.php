@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.14.0/baguetteBox.min.css" integrity="sha256-yr9rmZnVv36BpU0PB8FbmlmAA4V4o0BzxAvZSfbuDr4=" crossorigin="anonymous" />
 <div class="card">
     <div class="card-header">Product List</div>
     <div class="card-body">
@@ -31,15 +30,7 @@
                     <td>{{ $product->kategori }}</td>
                     <td>{{ $product->price }}</td>
                     <td>{{ $product->stock }}</td>
-                    <td>
-                        @if($product->image)
-                        <a href="{{ asset('storage/images/' . $product->image) }}" data-toggle="lightbox" data-gallery="gallery">
-                            <img src="{{ asset('storage/images/' . $product->image) }}" alt="Product Image" style="max-width: 100px; max-height: 100px;" class="baguetteBox" />
-                        </a>
-                        @else
-                        No Image
-                        @endif
-                    </td>
+                    <td>{{ $product->image }}</td>
                     <td>
                         <form action="{{ route('products.destroy', $product->id) }}" method="post">
                             @csrf
@@ -71,13 +62,4 @@
 
     </div>
 </div>
-
-<!-- Tambahkan skrip berikut setelah memuat BaguetteBox -->
-<script>
-    baguetteBox.run('.baguetteBox', {
-        animation: 'fadeIn'
-    });
-</script>
 @endsection
-
-<script defer src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.14.0/baguetteBox.min.js" integrity="sha256-5EC6m6Jfd4/o5HgVyNTFUbqUGdFVrPXYEBcZL4FBRDE=" crossorigin="anonymous"></script>

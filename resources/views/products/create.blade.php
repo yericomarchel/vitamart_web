@@ -15,9 +15,7 @@
                 </div>
             </div>
             <div class="card-body">
-                <form action="{{ route('products.store') }}" method="post" enctype="multipart/form-data">
-
-
+                <form action="{{ route('products.store') }}" method="post">
                     @csrf
 
                     <div class="mb-3 row">
@@ -40,52 +38,25 @@
                         </div>
                     </div>
 
-                    <div class="mb-3 row">
-                        <label for="kategori" class="col-md-4 col-form-label text-md-end text-start">Kategori</label>
-                        <div class="col-md-6">
-                          <input type="text" class="form-control @error('kategori') is-invalid @enderror" id="kategori" name="kategori" value="{{ old('kategori') }}">
-                            @if ($errors->has('kategori'))
-                                <span class="text-danger">{{ $errors->first('kategori') }}</span>
-                            @endif
-                        </div>
-                    </div>
+                    <div class="form-group">
+                        <label for="kode_barang">Kategori</label>
+                        <input type="text" class="form-control" id="kategori" name="kategori" value="{{ isset($products) ? $products->kategori : '' }}">
+                      </div>
+
+                    <div class="form-group">
+                        <label for="price">Price</label>
+                        <input type="number" class="form-control" id="price" name="price" value="{{ isset($products) ? $products->price : '' }}">
+                      </div>
+                      <div class="form-group">
+                        <label for="stock">Stock</label>
+                        <input type="number" class="form-control" id="stock" name="stock" value="{{ isset($products) ? $products->stock : '' }}">
+                      </div>
 
 
-                    @if ($errors->has('kategori'))
-                        <span class="text-danger">{{ $errors->first('kategori') }}</span>
-                    @endif
-
-
-                    <div class="mb-3 row">
-                        <label for="kategori" class="col-md-4 col-form-label text-md-end text-start">Price</label>
-                        <div class="col-md-6">
-                          <input type="number" class="form-control @error('price') is-invalid @enderror" id="price" name="price" value="{{ old('price') }}">
-                            @if ($errors->has('price'))
-                                <span class="text-danger">{{ $errors->first('price') }}</span>
-                            @endif
-                        </div>
-                    </div>
-
-                    <div class="mb-3 row">
-                        <label for="stock" class="col-md-4 col-form-label text-md-end text-start">Stock</label>
-                        <div class="col-md-6">
-                          <input type="number" class="form-control @error('stock') is-invalid @enderror" id="stock" name="stock" value="{{ old('stock') }}">
-                            @if ($errors->has('stock'))
-                                <span class="text-danger">{{ $errors->first('price') }}</span>
-                            @endif
-                        </div>
-                    </div>
-
-                    <<div class="mb-3 row">
-                        <label for="image" class="col-md-4 col-form-label text-md-end text-start">Image</label>
-                        <div class="col-md-6">
-                            <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image">
-                            @if ($errors->has('image'))
-                                <span class="text-danger">{{ $errors->first('image') }}</span>
-                            @endif
-                        </div>
-                    </div>
-
+                    <div class="form-group">
+                        <label for="image">image</label>
+                        <input type="text" class="form-control" id="image" name="image" value="{{ isset($products) ? $products->image : '' }}">
+                      </div>
 
                       <div class="mb-3 row">
                         <input type="submit" class="col-md-3 offset-md-5 btn btn-primary" value="Add Product">

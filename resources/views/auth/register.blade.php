@@ -72,7 +72,9 @@
                 <!-- Register Card -->
                 <div class="card">
                     <div class="card-body">
+                        <!-- Logo -->
 
+                        <!-- /Logo -->
                         <h4 class="mb-2">Register</h4>
                         <p class="mb-4">Adventure starts here 🚀</p>
                         <form id="formAuthentication" class="mb-3" action="{{ route('register') }}" method="POST">

@@ -21,7 +21,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
@@ -31,11 +30,11 @@ Route::resources([
     'products' => ProductController::class,
 ]);
 
-Route::controller(KategoriController::class)->prefix('kategori')->group(function () {
-    Route::get('', 'index')->name('kategori');
-    Route::get('tambah', 'tambah')->name('kategori.tambah');
-    Route::post('tambah', 'simpan')->name('kategori.tambah.simpan');
-    Route::get('edit/{id}', 'edit')->name('kategori.edit');
-    Route::post('edit/{id}', 'update')->name('kategori.tambah.update');
-    Route::get('hapus/{id}', 'hapus')->name('kategori.hapus');
+Route::controller(ProductController::class)->prefix('product')->group(function () {
+    Route::get('', 'index')->name('product');
+    Route::get('tambah', 'create')->name('product.tambah');
+    Route::post('tambah', 'simpan')->name('product.tambah.simpan');
+    Route::get('edit/{id}', 'edit')->name('product.edit');
+    Route::post('edit/{id}', 'update')->name('product.tambah.update');
+    Route::get('hapus/{id}', 'hapus')->name('product.hapus');
 });

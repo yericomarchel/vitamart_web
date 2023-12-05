@@ -10,11 +10,8 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::table('products', function (Blueprint $table) {
-            $table->string('kategori')->nullable();
-            $table->integer('price')->nullable();
-            $table->integer('stock')->nullable();
-            $table->string('image');
+        Schema::table('carts', function (Blueprint $table) {
+            $table->boolean('is_active')->default(false);
         });
     }
 
@@ -23,7 +20,7 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::table('products', function (Blueprint $table) {
+        Schema::table('cart', function (Blueprint $table) {
             //
         });
     }
